@@ -1,0 +1,169 @@
+/* Rest */
+* {
+    box-sizing: border-box;
+}
+  
+html, body, div, span, h1, h2, h3, h4, h5, h6, p, a, img, form, label, article, aside, figure, figcaption, footer, header, nav, section {
+    margin: 0;
+    padding: 0;
+    border: none;
+    vertical-align: baseline;
+}
+  
+article, figcaption, figure, footer, header, nav, section {
+    display: block;
+}
+
+h1, h2, h3, h4, h5, h6, p, a, code {
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-variation-settings:
+    "slnt" 0;
+    color:#e6e6e6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 800;
+}
+
+h1, h2, h3, h4, h5, h6, p, code {
+    margin-bottom: 30px;
+}
+
+h1 {
+    font-size: 2.5rem;
+}
+
+h1:not(:first-of-type) {
+    margin-top: 75px;
+}
+
+body {
+    background-color: #111111;
+    padding: 75px 50px 100px;
+    position: relative;
+}
+
+section:not(#container) {
+    background-color: #343434;
+    border-radius: 10px;
+    padding: 30px 30px 40px;
+    width: calc(50% - 25px);
+}
+
+section:not(#container) p {
+    line-height: 140%;
+}
+
+code {
+    background-color: #111111;
+    display: block;
+    border-radius: 5px;
+    padding: 20px;
+    color: #adadad;
+    font-size: 0.9rem;
+    line-height: 160%;
+}
+
+code span {
+    color: #68f1e2;
+    font-weight: 600;
+}
+
+section#container {
+    position: fixed;
+    top: 45px;
+    right: 50px;
+    width: calc(50% - 75px);
+}
+
+section#container::before {
+    content: "Beispiel Pseudoelemente";
+    font-family: "Inter", sans-serif;
+    font-weight: 500;
+    color: #343434;
+    display: block;
+    margin-bottom: 10px;
+    font-size: 1rem;
+}
+
+section#container p, section#container a {
+    border-radius: 10px;
+    background-color: #343434;
+    margin-bottom: 10px;
+    padding: 20px;
+}
+
+section#container .list-1, section#container .button-1 {
+    margin-top: 40px;
+}
+
+section#container a {
+    background-color: #095850;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+    font-weight: 600;
+    transition: 0.2s;
+    position: relative;
+    z-index: 5;
+    overflow: hidden;
+}
+
+section#container .button-1:hover {
+    background-color: #168478;
+}
+
+section#container a::after {
+    transition: 0.2s;
+}
+
+section#container .button-1::after {
+    font-size: 1.7rem;
+    position: absolute;
+    margin-top: -8px;
+}
+
+section#container .button-1:hover::after {
+    margin-left: 20px;
+}
+
+#container .button-2::after {
+    z-index: -1;
+}
+
+#container .button-2:hover::after {
+    width: 100%;
+    left: 0;
+}
+
+@media screen and (max-width: 991px) {
+    body {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+
+    section:not(#container) {
+        width: 100%;
+    }
+
+    section#container {
+        position: inherit;
+        top: inherit;
+        right: inherit;
+        width: 100%;
+        margin-bottom: 120px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    body {
+        padding: 50px 25px 100px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+}

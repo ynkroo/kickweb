@@ -1,0 +1,72 @@
+/* --------- Pseudoklasse --------- */
+
+/* border: solid 2px #e6e6e6; */
+#container p {
+    border: solid 2px white;
+    
+}
+#container p:first-child {
+    background-color: red;
+
+    
+}
+
+
+
+
+/* --------- Pseudoelement --------- */
+
+/* --- Fliesstext --- */
+/* font-size: 5rem; */
+#container .lorem::first-letter {
+
+    
+}
+#container .lorem::first-line {
+
+}
+
+/* --- Liste --- */
+/* content: "👽";
+    margin-right: 10px; */
+
+#container .list-1::before{
+    
+    content: "🔥";
+    margin-right: 10px;
+    
+}
+#container .list-2::before{
+    
+}
+#container .list-3::before{
+    
+}
+
+/* --- Button --- */
+/* content: "🠖";
+    margin-left: 10px; */
+#container .button-1::after{
+    content: "->";
+    margin-left: 10px;
+    
+}
+
+/* content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    background-color: #168478; */
+
+#container .button-2::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    background-color: red;
+    
+}

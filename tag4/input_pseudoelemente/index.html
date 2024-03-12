@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="pseudoelemente.css">
+    <title>Pseudoelemente</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <section>
+        <h1>Pseudoklassen</h1>
+        <p>Pseudoklassen sind wie Spezialregeln, mit denen du bestimmte Elemente auf einer Webseite ändern kannst, basierend auf bestimmten Situationen. Sie werden zusammen mit normalen CSS-Selektoren verwendet, um genau zu sagen, in welcher Situation dieses Element angepasst werden soll. Zum Beispiel kannst du damit jedes zweite Element anders gestalten oder das Aussehen ändern, wenn jemand mit der Maus darüber fährt (das nennt man "hover"). Die Syntax dafür ist einfach: Du hängst sie einfach an den normalen CSS-Selektor mit einem Doppelpunkt (:) an. Ein Beispiel dafür wäre:</p>
+        <code>.button<span>:hover</span> {<br>&emsp;background-color: #0d6158;<br>}</code>
+        <p>Mit diesem Code wird allem Elementen mit der Klasse "button" eine Hintergrundfarbe vergeben, falls du mit der Maus über das Element fährst.</p>
+        <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes#alphabetical_index" target="_blank">Liste mit Pseudoklassen</a>
+        <h1>Pseudoelemente</h1>
+        <p>Grundsätzlich wird der Inhalt einer Webseite mit HTML erstellt, und nur diese Elemente können mit CSS bearbeitet werden. Mit sogenannten Pseudoelementen kannst du jedoch auch Teile der Webseite gestalten, die nicht direkt in HTML-Tags stehen. Aus meiner Sicht, gibt es zwei Arten von Pseudoelementen: Mit machen kannst nur bestimmte Teile eines vorhandenen Elements bearbeiten, während andere komplett neue Elemente erstellen, die nicht in HTML erstellt wurden. Pseudoelemente werden durch zwei Doppelpunkte (::) gekennzeichnet, im Gegensatz zu Pseudoklassen. Damit kannst du Pseudoklassen und Pseudoelemente leicht unterscheiden.</p>
+        <p>Beispielsweise kann mit dem Pseudoelement "::fist-line" nur die Erste Zeile eines Textes ausgewählt und verändert werden:</p>
+        <code>p<span>::first-letter</span> {<br>&emsp;font-size: 5rem;<br>}</code>
+        <p>Mithilfe von "::before" & "::after" kannst du neue Elemente in CSS erstellen und bearbeiten. Before und After können beide pro Element je nur einmal vergeben werden. Damit Before und After auf der Website sichtbar sind, musst du ihnen einen Inhalt zuweisen (content:). Selbst wenn du nur die Hintergrundfarbe verwenden möchtest, musst du trotzdem einen Inhalt festlegen. Dieser kann sogar leer sein (contetnt : "";), aber wenn kein Inhalt angegeben wird, verschwindet das Element von der Website. Das neue Element mit seinem Inhalt wird vor bzw. nach dem eigentlichen Inhalt des Elements eingefügt.</p>
+        <p>Before und After werden meistens für Design-Elemente verwendet oder um kleine Akzente zu setzen. Wichtig ist, dass du alle relevanten Informationen direkt im HTML definierst. Beispielsweise können mit diesen Pseudoelementen Hovereffekte erstellt werden, die ein zusätzliches Element benötigen:</p>
+        <code>#container .button-2<span>::after</span> {<br>
+            &emsp;content: "";<br>
+            &emsp;position: absolute;<br>
+            &emsp;top: 0;<br>
+            &emsp;left: 0;<br>
+            &emsp;width: 0%;<br>
+            &emsp;height: 100%;<br>
+            &emsp;background-color: #0d6158;<br>
+            &emsp;z-index: -1;<br>
+        }<br><br>
+        
+        #container .button-2:hover<span>::after</span> {<br>
+            &emsp;width: 100%;<br>
+            &emsp;left: 0;<br>
+        }</code>
+        <p>Ein Nachteil von Pseudoelementen ist, dass du diese nicht direkt mit JavaScript verändern kannst.</p>
+        <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-elements#list_of_pseudo-elements" target="_blank">Liste mit Pseudoelementen</a>
+    </section>
+    <section id="container">
+        <p class="lorem">Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem tempore veritatis facilis ipsa maiores vitae ipsum autem, labore id laborum obcaecati quaerat voluptas aspernatur. Consectetur libero unde vero saepe illum corrupti, numquam illo, eum fugiat vel beatae ipsam.</p>
+        <p class="list-1">Listenelement</p>
+        <p class="list-2">Listenelement</p>
+        <p class="list-3">Listenelement</p>
+        <a class="button-1" href="#">Button 1</a>
+        <a class="button-2" href="#">Button 2</a>
+    </section>
+</body>
+</html>

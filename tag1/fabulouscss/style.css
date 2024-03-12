@@ -1,0 +1,58 @@
+/*-----Tags----*/
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+
+@font-face {
+    font-family: Suisse;
+    src: url("SuisseIntl-SemiBold.otf");
+}
+
+body{
+    /* background-color: rgb(255, 198, 165); */
+    margin-left: 10%;
+    margin-top: 10%;
+    background: linear-gradient(180deg, rgba(84,47,125,1) 0%, rgba(11,7,17,1) 100%); 
+}
+
+h1{
+
+    font-family: "IBM Plex Sans", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 125px;
+    color: #ab8ccd;
+    line-height: 1em;
+}
+
+p{
+
+    font-family: "Suisse";
+    font-weight: 300;
+    font-style: normal;
+    color: #ab8ccd;
+    font-size: 45px;
+    max-width: 90%;
+
+
+}
+
+a{
+    color: #ab8ccd;
+    font-size: 25px;
+    font-style: italic;
+}
+
+/*-----ID----*/
+#poetry{
+
+}
+
+/*-----Klassen----*/
+.first{
+
+}
+.second{
+
+}
+.third{
+
+}

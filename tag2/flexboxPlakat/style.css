@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
+
+:root {
+    /* CSS Angaben über Custom Properties definieren, -> zentraler Ort, um Werte zu ändern */
+    --white: #fff;
+    --background: #e4007b;
+    --dark: #6d0039;
+    --bright: #c10069;
+    --medium: #a00058;
+    --grey:#666666;
+}
+
+body{
+    font-family: 'Roboto';
+    background-color: var(--grey);
+    display: flex;
+    justify-content: center;
+}
+
+#plakat{
+    background-color: var(--white); 
+    width:60vw;
+    /*Proportionen A-Formate 1.4141--*/
+    height:calc(1.4141*60vw);
+}
+
+section.dotrow {
+    background-color: var(--background);
+    padding: 3em;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    
+   
+}
+
+.dot {
+    border-radius: 50%;
+    height: 150px;
+    width: 150px;
+    background-color: var(--white);
+    margin: 5px;
+    display: flex;
+    flex-direction: column;
+}
+
+section.titel {
+    font-size: 6vw;
+    text-align: center;
+    
+}
+
+section.konzertinfo{
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    
+    
+
+
+
+}

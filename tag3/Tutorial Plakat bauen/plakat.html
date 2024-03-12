@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+
+
+    <style>
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
+body{
+    background-color:black;
+}
+.brockmanngrid{
+    display:grid;
+    grid-template-columns: repeat(7,14vw); /* https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template-columns*/
+    grid-template-rows: repeat(8,10.75vw);
+}
+.der {
+    grid-column: 1 / 5;
+    grid-row: 3 / 6;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    font-size: 32vw;
+    color: #62a792;
+    }
+        
+    .film {
+        grid-column: 3 / 8;
+        grid-row: 3 / 6;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 700;
+        font-size: 32vw;
+        color: #f3f6e5;
+    }
+
+    .redfont {
+
+        font-family: 'Roboto', sans-serif;
+        font-weight: 700;
+        font-size: 2.5vw;
+        color: red;
+
+    }
+
+    .ort {
+        grid-column: 3 / 6;
+        grid-row: 1 / 2;
+        margin-top: 8.5vw;
+    }
+
+
+    .datum {
+        grid-column: 3 / 6;
+        grid-row: 6 / 7;
+        margin-top: 8.5vw;
+    }
+
+    .termin {
+        grid-column: 3 / 8;
+        grid-row: 7 / 8;
+        margin-top: 2.5vw;
+    }
+
+
+
+
+
+    </style>
+
+</head>
+<body>
+
+
+
+    <div class="brockmanngrid">
+        <div class="der">
+            der
+        </div>
+        <div class="film">
+            Film
+        </div>
+
+
+        <div class="ort redfont">
+            Kunstgewerbemuseum Zürich <br/> Ausstellung</div>
+            <div class="datum redfont">
+                10.Januar bis 30. April 1960</div>
+                <div class="termin redfont">
+                    Offen: Montag 1-18, 20-22 <br/> Dienstag-Freitag: 10-12, 14-18, 20-22 <br/> Samstag-Sonntag: 10-12, 14-17</div>
+
+
+    </div>  
+
+    
+</body>
+</html>
