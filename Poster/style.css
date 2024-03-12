@@ -1,0 +1,172 @@
+/* Global Styles */
+
+body {
+    background-color: #101011;
+    padding: 10rem;
+    margin: 0rem;
+    margin-top: 2rem;
+    background-image: url('https://www.transparenttextures.com/patterns/black-felt.png');
+    opacity: 1;
+    overflow: hidden;
+}
+
+.background {
+    background-color: yellow;
+}
+
+
+p {
+    position: absolute;
+    color: #C2BBB3;
+    font-family: "Roboto Flex", sans-serif;
+    font-size: .7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    line-height: .85rem;
+}
+
+.middle {
+    left: 49vw;
+    text-align: center;
+    writing-mode: vertical-lr;
+}
+
+.left-corner {
+    left: 30px;
+    top: 10px;
+}
+
+.right-corner {
+    right: 30px;
+    top: 10px;
+    text-align: right;
+}
+
+
+
+
+/* Grid Layout */
+#main-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 100rem;
+    gap: 5rem;
+    
+}
+
+#grid-left,
+#grid-right {
+    /* background: aqua; */
+    display: grid;
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 0.5rem;
+}
+
+#grid-left {
+    --row-heights: 4vh 3vh 2vh 2vh 2vh 30vh 18vh;
+}
+
+
+#grid-right {
+    --row-heights: 5vh 5vh 5vh 30vh 5vh 5vh 5vh;
+}
+
+#grid-left,
+#grid-right {
+    grid-template-rows: var(--row-heights);
+}
+
+
+
+
+/* Container Styles */
+:root {
+    --container-width: 100%;
+    --container-height: 100%;
+}
+
+.container-a,
+.container-d,
+.container-r,
+.container-g-1,
+.container-g-2,
+.container-e-1,
+.container-e-2,
+.container-t-1,
+.container-t-2,
+.container-t-3,
+.container-i,
+.container-n,
+.container-s {
+    width: var(--container-width);
+    height: var(--container-height);
+    border: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+}
+
+.g-1,
+.g-2,
+.e-1,
+.e-2,
+.a,
+.d,
+.t-1,
+.t-2,
+.t-3,
+.t-4,
+.i,
+.r,
+.s,
+.n {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-color: red; */
+}
+
+.g-1 svg,
+.g-2 svg,
+.e-1 svg,
+.e-2 svg,
+.r svg,
+.d svg,
+.t-1 svg,
+.t-2 svg,
+.t-3 svg,
+.t-4 svg,
+.i svg,
+.a svg,
+.s svg,
+.n svg {
+    width: 100%;
+    height: 100%;
+    fill: #C2BBB3;
+}
+
+
+
+
+
+
+
+#circle {
+    width: 700px;
+    height: 700px;
+    border-radius: 50%;
+    background: radial-gradient(ellipse at center, #220d38, #ce5c16, #C2BBB3,  #C2BBB3); /* Radial gradient */
+    position: absolute;
+    display: none;
+    z-index: 1;
+    mix-blend-mode:darken;
+}
+
+
+
+
