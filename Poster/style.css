@@ -2,13 +2,31 @@
 
 body {
     background-color: #101011;
-    padding: 10rem;
+    padding: 8rem 24rem;
     margin: 0rem;
     margin-top: 2rem;
     background-image: url('https://www.transparenttextures.com/patterns/black-felt.png');
     opacity: 1;
     overflow: hidden;
 }
+
+/* Media query for smaller screens */
+@media screen and (max-width: 1300px) {
+    body {
+        padding: 8rem 8rem; /* Adjust padding for smaller screens */
+    }
+}
+
+/* Media query for smaller screens */
+@media screen and (max-width: 840px) {
+    body {
+        padding: 8rem 4rem; /* Adjust padding for smaller screens */
+    }
+}
+
+
+
+
 
 .background {
     background-color: yellow;
@@ -50,7 +68,7 @@ p {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 100rem;
-    gap: 5rem;
+    gap: 2.5rem;
     
 }
 
@@ -64,12 +82,12 @@ p {
 }
 
 #grid-left {
-    --row-heights: 4vh 3vh 2vh 2vh 2vh 30vh 18vh;
+    --row-heights: 7vh 7vh 2vh 2vh 2vh 30vh 18vh;
 }
 
 
 #grid-right {
-    --row-heights: 5vh 5vh 5vh 30vh 5vh 5vh 5vh;
+    --row-heights: 7vh 7vh 5vh 30vh 5vh 8vh 5vh;
 }
 
 #grid-left,
@@ -152,10 +170,6 @@ p {
 
 
 
-
-
-
-
 #circle {
     width: 700px;
     height: 700px;
@@ -166,7 +180,3 @@ p {
     z-index: 1;
     mix-blend-mode:darken;
 }
-
-
-
-

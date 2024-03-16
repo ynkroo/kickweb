@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Resizable Letter</title>
+<style>
+
+    
+  :root {
+    --container-width: 50%; /* Default container width */
+    --container-height: 100px; /* Default container height */
+  }
+
+  .container {
+    width: var(--container-width);
+    height: var(--container-height);
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .g {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .g svg {
+    width: 100%;
+    height: 100%;
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <div class="g">
+    <svg viewBox="0 0 652.3 572" preserveAspectRatio="none">
+      <g id="Layer_1-2" data-name="Layer 1">
+        <path class="cls-1" d="M268.9,572C100.8,572,0,485.6,0,298.5v-2.3c0-63.6,13.6-117.4,40.9-161.4C95.5,45.5,196.2,0,329.6,0c184.9,0,300.8,65.2,321.2,217.4h-205.3c-11.4-38.6-44.7-59.1-115.9-59.1-91.7,0-140.9,40.2-140.9,135.6v.8c0,85.6,41.7,129.6,137.1,129.6,80.3,0,123.5-22.7,137.9-65.2h-159.1v-100h347.7v297.7h-161.4l-11.4-150.8c-15.8,116.7-83.3,166-210.6,166Z"/>
+      </g>
+    </svg>
+  </div>
+</div>
+
+<script>
+  // JavaScript to dynamically adjust the letter size based on container size
+  const container = document.querySelector('.container');
+  const letter = document.querySelector('.letter');
+
+  function adjustLetterSize() {
+    const containerWidth = container.offsetWidth;
+    const containerHeight = container.offsetHeight;
+    const letterWidth = letter.offsetWidth;
+    const letterHeight = letter.offsetHeight;
+    
+    // Calculate scale factors
+    const scaleX = containerWidth / letterWidth;
+    const scaleY = containerHeight / letterHeight;
+
+    // Apply scaling
+    letter.style.transform = `scale(${Math.max(scaleX, scaleY)})`;
+  }
+
+  window.addEventListener('resize', adjustLetterSize);
+  adjustLetterSize(); // Call the function initially to set the letter size
+</script>
+
+</body>
+</html>
