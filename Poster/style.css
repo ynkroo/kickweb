@@ -2,7 +2,7 @@
 
 body {
     background-color: #101011;
-    padding: 8rem .7rem;
+    padding: 4rem 24rem;
     margin: 0rem;
     margin-top: 2rem;
     background-image: url('https://www.transparenttextures.com/patterns/black-felt.png');
@@ -76,12 +76,12 @@ p {
 }
 
 #grid-left {
-    --row-heights: 50vh 50vh 50vh 50vh 50vh 50vh 50vh;
+    --row-heights: 40vh 40vh 40vh 40vh 40vh 40vh 40vh;
 }
 
 
 #grid-right {
-    --row-heights: 50vh 50vh 50vh 50vh 50vh 50vh 50vh;
+    --row-heights: 40vh 40vh 40vh 40vh 40vh 40vh 40vh;
 }
 
 #grid-left,
@@ -186,12 +186,129 @@ p {
 
 /* Animation */
 
-[class^="container-"] {
-    transition: height 0.3s ease-in-out, margin-bottom 0.3s ease-in-out; /* Add transition effect for height and margin */
-    margin-bottom: 10rem; /* Set initial margin */
+
+.container-a,
+.container-d,
+.container-r,
+.container-g-1,
+.container-g-2,
+.container-e-1,
+.container-e-2,
+.container-t-1,
+.container-t-2,
+.container-t-3,
+.container-i,
+.container-n,
+.container-s {
+    width: var(--container-width);
+    height: var(--container-height);
+    border: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+    transition: height 0.5s ease-in-out, margin 0.5s ease-in-out; /* Transition for height and margin change */
+    margin-bottom: 100px; /* Initial margin */
 }
 
-[class^="container-"]:hover {
-    height: 150%; /* Change height on hover */
-    margin-bottom: -100%; /* Adjust margin to maintain the gap */
+.container-a:hover,
+.container-d:hover,
+.container-r:hover,
+.container-g-1:hover,
+.container-g-2:hover,
+.container-e-1:hover,
+.container-e-2:hover,
+.container-t-1:hover,
+.container-t-2:hover,
+.container-t-3:hover,
+.container-i:hover,
+.container-n:hover,
+.container-s:hover {
+    height: 60vh; /* Height when hovering */
+    margin-bottom: 100px; /* Adjust margin as needed */
+}
+
+.container-a:hover ~ .container-d,
+.container-a:hover ~ .container-r,
+.container-a:hover ~ .container-g-1,
+.container-a:hover ~ .container-g-2,
+.container-a:hover ~ .container-e-1,
+.container-a:hover ~ .container-e-2,
+.container-a:hover ~ .container-t-1,
+.container-a:hover ~ .container-t-2,
+.container-a:hover ~ .container-t-3,
+.container-a:hover ~ .container-i,
+.container-a:hover ~ .container-n,
+.container-a:hover ~ .container-s,
+.container-d:hover ~ .container-r,
+.container-d:hover ~ .container-g-1,
+.container-d:hover ~ .container-g-2,
+.container-d:hover ~ .container-e-1,
+.container-d:hover ~ .container-e-2,
+.container-d:hover ~ .container-t-1,
+.container-d:hover ~ .container-t-2,
+.container-d:hover ~ .container-t-3,
+.container-d:hover ~ .container-i,
+.container-d:hover ~ .container-n,
+.container-d:hover ~ .container-s,
+.container-r:hover ~ .container-g-1,
+.container-r:hover ~ .container-g-2,
+.container-r:hover ~ .container-e-1,
+.container-r:hover ~ .container-e-2,
+.container-r:hover ~ .container-t-1,
+.container-r:hover ~ .container-t-2,
+.container-r:hover ~ .container-t-3,
+.container-r:hover ~ .container-i,
+.container-r:hover ~ .container-n,
+.container-r:hover ~ .container-s,
+.container-g-1:hover ~ .container-g-2,
+.container-g-1:hover ~ .container-e-1,
+.container-g-1:hover ~ .container-e-2,
+.container-g-1:hover ~ .container-t-1,
+.container-g-1:hover ~ .container-t-2,
+.container-g-1:hover ~ .container-t-3,
+.container-g-1:hover ~ .container-i,
+.container-g-1:hover ~ .container-n,
+.container-g-1:hover ~ .container-s,
+.container-g-2:hover ~ .container-e-1,
+.container-g-2:hover ~ .container-e-2,
+.container-g-2:hover ~ .container-t-1,
+.container-g-2:hover ~ .container-t-2,
+.container-g-2:hover ~ .container-t-3,
+.container-g-2:hover ~ .container-i,
+.container-g-2:hover ~ .container-n,
+.container-g-2:hover ~ .container-s,
+.container-e-1:hover ~ .container-e-2,
+.container-e-1:hover ~ .container-t-1,
+.container-e-1:hover ~ .container-t-2,
+.container-e-1:hover ~ .container-t-3,
+.container-e-1:hover ~ .container-i,
+.container-e-1:hover ~ .container-n,
+.container-e-1:hover ~ .container-s,
+.container-e-2:hover ~ .container-t-1,
+.container-e-2:hover ~ .container-t-2,
+.container-e-2:hover ~ .container-t-3,
+.container-e-2:hover ~ .container-i,
+.container-e-2:hover ~ .container-n,
+.container-e-2:hover ~ .container-s,
+.container-t-1:hover ~ .container-t-2,
+.container-t-1:hover ~ .container-t-3,
+.container-t-1:hover ~ .container-i,
+.container-t-1:hover ~ .container-n,
+.container-t-1:hover ~ .container-s,
+.container-t-2:hover ~ .container-t-3,
+.container-t-2:hover ~ .container-i,
+.container-t-2:hover ~ .container-n,
+.container-t-2:hover ~ .container-s,
+.container-t-3:hover ~ .container-i,
+.container-t-3:hover ~ .container-n,
+.container-t-3:hover ~ .container-s,
+.container-t-4:hover ~ .container-i,
+.container-t-4:hover ~ .container-n,
+.container-t-4:hover ~ .container-s,
+.container-i:hover ~ .container-n,
+.container-i:hover ~ .container-s,
+.container-n:hover ~ .container-s {
+    margin-top: 200px; /* Adjust margin as needed */
 }
