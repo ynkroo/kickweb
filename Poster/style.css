@@ -2,12 +2,12 @@
 
 body {
     background-color: #101011;
-    padding: 8rem 24rem;
+    padding: 8rem .7rem;
     margin: 0rem;
     margin-top: 2rem;
     background-image: url('https://www.transparenttextures.com/patterns/black-felt.png');
     opacity: 1;
-    overflow: hidden;
+    overflow: auto;
 }
 
 /* Media query for smaller screens */
@@ -25,12 +25,6 @@ body {
 }
 
 
-
-
-
-.background {
-    background-color: yellow;
-}
 
 
 p {
@@ -67,7 +61,7 @@ p {
 #main-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 100rem;
+    /* grid-template-rows: 100rem; */
     gap: 2.5rem;
     
 }
@@ -82,12 +76,12 @@ p {
 }
 
 #grid-left {
-    --row-heights: 7vh 7vh 2vh 2vh 2vh 30vh 18vh;
+    --row-heights: 50vh 50vh 50vh 50vh 50vh 50vh 50vh;
 }
 
 
 #grid-right {
-    --row-heights: 7vh 7vh 5vh 30vh 5vh 8vh 5vh;
+    --row-heights: 50vh 50vh 50vh 50vh 50vh 50vh 50vh;
 }
 
 #grid-left,
@@ -146,7 +140,7 @@ p {
     display: flex;
     justify-content: center;
     align-items: center;
-    /* background-color: red; */
+    /* background-color: #252527; */
 }
 
 .g-1 svg,
@@ -170,6 +164,8 @@ p {
 
 
 
+/* Cursor */
+
 #circle {
     width: 700px;
     height: 700px;
@@ -178,5 +174,24 @@ p {
     position: absolute;
     display: none;
     z-index: 1;
-    mix-blend-mode:darken;
+    mix-blend-mode: darken; /* Ensures that z-index works correctly */
+    pointer-events: none; /* ignore pointer events on the circle */
+    position: absolute; /* set position to absolute */
+}
+
+
+
+
+
+
+/* Animation */
+
+[class^="container-"] {
+    transition: height 0.3s ease-in-out, margin-bottom 0.3s ease-in-out; /* Add transition effect for height and margin */
+    margin-bottom: 10rem; /* Set initial margin */
+}
+
+[class^="container-"]:hover {
+    height: 150%; /* Change height on hover */
+    margin-bottom: -100%; /* Adjust margin to maintain the gap */
 }
