@@ -1,19 +1,17 @@
-/* Global Styles */
-
 * {
     margin: 0px;
     padding: 0px;
-    box-sizing: border-box;
 
 }
 
 html, body {
     background-color: #101011;
     margin: 0rem;
-    margin-top: 0rem;
     background-image: url('https://www.transparenttextures.com/patterns/black-felt.png');
     opacity: 1;
     overflow: auto;
+    scroll-behavior: smooth;
+    height: 100vh;
 }
 
 
@@ -25,12 +23,6 @@ p {
     font-weight: 700;
     text-transform: uppercase;
     line-height: .85rem;
-}
-
-.middle {
-    left: 49vw;
-    text-align: center;
-    writing-mode: vertical-lr;
 }
 
 .left-corner {
@@ -65,7 +57,7 @@ p {
 /* Media query for tablets and phones */
 @media screen and (max-width: 1400px) {
     #main-container {
-        grid-template-columns: minmax(0, 1fr) 1fr; /* Two columns */
+        grid-template-columns: minmax(0, 1fr) 1fr;
     }
 }
 
@@ -84,7 +76,6 @@ p {
     display: flex;
     justify-content: center;
     align-items: center;
-    /* background-color: #252527; */
 }
 
 .c svg, .o svg, .d svg, .e svg {
@@ -92,12 +83,6 @@ p {
     height: 100%;
     fill: #C2BBB3;
 }
-
-
-
-
-
-
 
 
 

@@ -19,39 +19,39 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 document.addEventListener('DOMContentLoaded', function() {
-    const mainContainer = document.querySelector('#main-container');
-    const animationDuration = 20; // in milliseconds
-    let isAnimating = false;
+  const mainContainer = document.querySelector('#main-container');
+  const animationDuration = 20; // in milliseconds
+  let isAnimating = false;
 
-    function animateColumnsAndRows(event) {
-      if (!isAnimating) {
-        isAnimating = true;
+  function animateColumnsAndRows(event) {
+    if (!isAnimating) {
+      isAnimating = true;
 
-        const mouseX = event.clientX;
-        const mouseY = event.clientY;
+      const mouseX = event.clientX;
+      const mouseY = event.clientY;
 
-        // Calculate new column widths
-        const newColumns = [
-          (mouseX / window.innerWidth) * 6 + 1,
-          3,
-          2,
-          (mouseY / window.innerHeight) * 6 + 1
-        ].map(val => `${val}fr`).join(' ');
+      // Calculate new column widths
+      const newColumns = [
+        (mouseX / window.innerWidth) * 7 + 1,
+        3,
+        2,
+        (mouseY / window.innerHeight) * 7 + 1
+      ].map(val => `${val}fr`).join(' ');
 
-        // Calculate new row height, limiting it to a range of 5vh to 100vh
-        let newRowHeight = (mouseY / window.innerHeight) * 95 + 5;
-        newRowHeight = Math.max(5, Math.min(100, newRowHeight));
-        newRowHeight = `${newRowHeight}vh`;
+      // Calculate new row height, limiting it to a range of 5vh to 100vh
+      let newRowHeight = (mouseY / window.innerHeight) * 95 + 5;
+      newRowHeight = Math.max(5, Math.min(100, newRowHeight));
+      newRowHeight = `${newRowHeight}vh`;
 
-        // Update grid columns and row heights
-        mainContainer.style.gridTemplateColumns = newColumns;
-        mainContainer.style.gridAutoRows = newRowHeight;
+      // Update grid columns and row heights
+      mainContainer.style.gridTemplateColumns = newColumns;
+      mainContainer.style.gridAutoRows = newRowHeight;
 
-        setTimeout(() => {
-          isAnimating = false;
-        }, animationDuration);
-      }
+      setTimeout(() => {
+        isAnimating = false;
+      }, animationDuration);
     }
+  }
 
-    document.addEventListener('mousemove', animateColumnsAndRows);
-  });
+  document.addEventListener('mousemove', animateColumnsAndRows);
+});
