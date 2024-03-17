@@ -1,20 +1,20 @@
 /* Global Styles */
 
-body {
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+
+}
+
+html, body {
     background-color: #101011;
-    padding: 8rem 4rem;
     margin: 0rem;
     margin-top: 0rem;
     background-image: url('https://www.transparenttextures.com/patterns/black-felt.png');
     opacity: 1;
     overflow: auto;
 }
-
-
-
-
-
-
 
 
 p {
@@ -35,35 +35,44 @@ p {
 
 .left-corner {
     left: 30px;
-    top: 10px;
+    top: 30px;
 }
 
 .right-corner {
     right: 30px;
-    top: 10px;
+    top: 30px;
     text-align: right;
 }
 
 
 
 
-/* Grid Layout */
 #main-container {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: 100px;
+    grid-template-columns: repeat(4, minmax(0, 1fr)); /* Default: 4 columns for desktop */
+    grid-auto-rows: 80vh;
     gap: 0.5rem;
-    /* background: red; */
-    
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transform-origin: center;
+    width: 100vw;
+    padding: 2rem;
+}
+
+/* Media query for tablets and phones */
+@media screen and (max-width: 1400px) {
+    #main-container {
+        grid-template-columns: repeat(2, minmax(0, 1fr)); /* 2 columns for tablets and phones */
+        grid-auto-rows: 40vh; /* 2 rows for tablets and phones */
+    }
 }
 
 
 
-/* Container Styles */
-:root {
-    --container-width: 100%;
-    --container-height: 100%;
-}
+
+
 
 
 .container-c, .container-o, .container-d, .container-e {
@@ -89,7 +98,6 @@ p {
     height: 100%;
     fill: #C2BBB3;
 }
-
 
 
 
