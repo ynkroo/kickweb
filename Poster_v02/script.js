@@ -16,3 +16,33 @@ document.addEventListener('DOMContentLoaded', function() {
         circle.style.top = circleY + 'px';
     });
 });
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    const mainContainer = document.querySelector('#main-container');
+    const animationDuration = 20; // in milliseconds
+    let isAnimating = false;
+
+    function animateColumns(event) {
+      if (!isAnimating) {
+        isAnimating = true;
+
+        const mouseX = event.clientX;
+        const mouseY = event.clientY;
+        const newColumns = [
+          (mouseX / window.innerWidth) * 6 + 1,
+          3,
+          2,
+          (mouseY / window.innerHeight) * 6 + 1
+        ].map(val => `${val}fr`).join(' ');
+
+        mainContainer.style.gridTemplateColumns = newColumns;
+
+        setTimeout(() => {
+          isAnimating = false;
+        }, animationDuration);
+      }
+    }
+
+    document.addEventListener('mousemove', animateColumns);
+  });

@@ -49,7 +49,7 @@ p {
 
 #main-container {
     display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr)); /* Default: 4 columns for desktop */
+    grid-template-columns: minmax(0, 1fr) 3fr 2fr minmax(0, 1fr);
     grid-auto-rows: 80vh;
     gap: 0.5rem;
     position: absolute;
@@ -59,21 +59,15 @@ p {
     transform-origin: center;
     width: 100vw;
     padding: 2rem;
+    transition: grid-template-columns 1s cubic-bezier(.54,0,.5,1);
 }
 
 /* Media query for tablets and phones */
 @media screen and (max-width: 1400px) {
     #main-container {
-        grid-template-columns: repeat(2, minmax(0, 1fr)); /* 2 columns for tablets and phones */
-        grid-auto-rows: 40vh; /* 2 rows for tablets and phones */
+        grid-template-columns: minmax(0, 1fr) 1fr; /* Two columns */
     }
 }
-
-
-
-
-
-
 
 .container-c, .container-o, .container-d, .container-e {
     width: var(--container-width);
