@@ -1,0 +1,120 @@
+/* Global Styles */
+
+body {
+    background-color: #101011;
+    padding: 8rem 4rem;
+    margin: 0rem;
+    margin-top: 0rem;
+    background-image: url('https://www.transparenttextures.com/patterns/black-felt.png');
+    opacity: 1;
+    overflow: auto;
+}
+
+
+
+
+
+
+
+
+p {
+    position: absolute;
+    color: #C2BBB3;
+    font-family: "Roboto Flex", sans-serif;
+    font-size: .7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    line-height: .85rem;
+}
+
+.middle {
+    left: 49vw;
+    text-align: center;
+    writing-mode: vertical-lr;
+}
+
+.left-corner {
+    left: 30px;
+    top: 10px;
+}
+
+.right-corner {
+    right: 30px;
+    top: 10px;
+    text-align: right;
+}
+
+
+
+
+/* Grid Layout */
+#main-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 100px;
+    gap: 0.5rem;
+    /* background: red; */
+    
+}
+
+
+
+/* Container Styles */
+:root {
+    --container-width: 100%;
+    --container-height: 100%;
+}
+
+
+.container-c, .container-o, .container-d, .container-e {
+    width: var(--container-width);
+    height: var(--container-height);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.c, .o, .d, .e {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-color: #252527; */
+}
+
+.c svg, .o svg, .d svg, .e svg {
+    width: 100%;
+    height: 100%;
+    fill: #C2BBB3;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Cursor */
+
+#circle {
+    width: 700px;
+    height: 700px;
+    border-radius: 50%;
+    background: radial-gradient(ellipse at center, #220d38, #ce5c16, #C2BBB3,  #C2BBB3); /* Radial gradient */
+    position: absolute;
+    display: none;
+    z-index: 1;
+    mix-blend-mode: darken; /* Ensures that z-index works correctly */
+    pointer-events: none; /* ignore pointer events on the circle */
+    position: absolute; /* set position to absolute */
+}
