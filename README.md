@@ -1,5 +1,7 @@
 # kickweb
-Repository für KickWeb-Modul
+Repository für KickWeb-Modul<br>
+https://ynkroo.github.io/kickweb
 
-Sprint 1, aktueller Stand
+
+aktueller Stand<br>
 https://ynkroo.github.io/kickweb/Poster_v02/poster_v02.html
