@@ -1,4 +1,4 @@
-# kickweb Yannick Röösli
+# KIWEB.F2401 Yannick Röösli
 Repository für KickWeb-Modul<br>
 [https://ynkroo.github.io/kickweb](https://github.com/ynkroo/kickweb.git)
 
