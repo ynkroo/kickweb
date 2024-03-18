@@ -4,6 +4,12 @@
 
 }
 
+::selection {
+    color: #220d38;
+    background-color: #ce5c16;
+    mix-blend-mode: difference;
+  }
+
 html, body {
     background-color: #101011;
     margin: 0rem;
@@ -27,32 +33,54 @@ p {
 .left-corner {
     left: 30px;
     top: 30px;
+    z-index: 1;
+    mix-blend-mode: difference;
 }
 
 .right-corner {
     right: 30px;
     top: 30px;
     text-align: right;
+    z-index: 1;
+    mix-blend-mode: difference;
 }
 
 
 .hero {
-    width: 100%;
+    width: 100vw;
     height: 100vh;
 }
 
 .info {
-    height: 1000px;
-    width: 100%;
-    background-color: aqua;
+    height: 50%;
+    width: 50%;
+    border: solid 1rem #C2BBB3;
+    box-sizing: border-box;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 20px;
+    border:1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    z-index: 0;
+    display: flex;
+}
+
+h1{
+    padding: 5rem;
     color: #C2BBB3;
     font-family: "Roboto Flex", sans-serif;
-    font-size: 3rem;
+    font-size: 8rem;
     font-weight: 700;
     text-transform: uppercase;
-    line-height: .85rem;
-    padding: 2rem;
+    line-height: 7rem;
 }
+
+
+
+
+
+
 
 #main-container {
     display: grid;
@@ -98,12 +126,6 @@ p {
     height: 100%;
     fill: #C2BBB3;
 }
-
-
-
-
-
-
 
 
 /* Cursor */
