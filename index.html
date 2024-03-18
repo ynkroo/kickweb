@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index Kickweb Yannick Röösli</title>
+
+    <style>
+          * {
+            margin: 0px;
+            padding: 0px;
+            background-color: #101011;
+            background-image: url('https://www.transparenttextures.com/patterns/black-felt.png');
+            opacity: 1;
+            overflow: auto;
+            scroll-behavior: smooth;
+            }
+
+         ::selection {
+            color: #220d38;
+            background-color: #ce5c16;
+            mix-blend-mode: difference;
+             }
+        
+        h1 {
+            margin: 0px;
+            padding-left: 2rem;
+            padding-top: 5rem;
+            color: #C2BBB3;
+            font-family: "Roboto Flex", sans-serif;
+            font-size: 16rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        h3 {
+            margin: 0px;
+            padding-left: 2rem;
+            padding-top: 5rem;
+            color: #C2BBB3;
+            font-family: "Roboto Flex", sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .left-corner {
+            left: 2rem;
+            top: 30px;
+        }
+
+        .right-corner {
+            right: 2rem;
+            top: 30px;
+            text-align: right;
+        }
+
+        p {
+            position: absolute;
+            color: #C2BBB3;
+            font-family: "Roboto Flex", sans-serif;
+            font-size: .7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            line-height: .85rem;
+        }
+
+        .container-button {
+            width: 50vw;
+            min-height: auto; /* Set a minimum height */
+            max-height: auto; /* Set a maximum height */
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            
+            padding: 2rem;
+            gap: 2rem;
+        }
+
+
+        button {
+            width: 200px;
+            height: 100px;
+            background-color: #C2BBB3;
+            border-radius: 20px;
+            font-family: "Roboto Flex", sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            line-height: .85rem;
+            transition: transform 0.3s ease-in-out;
+            border: none;
+        }
+
+        button:hover {
+            background-color: #ce5c16;
+            transform: scale(1.1);
+            transition-timing-function: ease-out;
+            color: #220d38;
+            font-weight: 800;
+         }
+
+     </style>
+
+</head>
+<body>
+    <header>
+        <h1>Index</h1>
+        <p class="left-corner">Posterdesign <br> Yannick Röösli</p>
+        <p class="right-corner">Web development <br> Digital Ideation</p>
+    </header>
+
+
+<div class="Prozess">
+     <h3>Prozess</h3>
+        <div class="container-button">
+            <button type="button" onclick="window.open('https://google.com', '_blank')">Tag 1</button>
+            <button type="button">Tag 2</button>
+            <button type="button">Tag 3</button>
+            <button type="button">Tag 4</button>
+        </div>
+</div>
+    
+</body>
+</html>
