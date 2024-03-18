@@ -11,10 +11,13 @@
             padding: 0px;
             background-color: #101011;
             background-image: url('https://www.transparenttextures.com/patterns/black-felt.png');
-            
             overflow: auto;
             scroll-behavior: smooth;
             }
+
+         body{
+            height: 110vh;
+         }   
 
          ::selection {
             color: #220d38;
@@ -33,6 +36,12 @@
             text-transform: uppercase;
         }
 
+        @media screen and (max-width: 750px) {
+    h1 {
+        font-size: 10rem; /* Adjusted font size for smaller screens */
+    }
+}
+
         h3 {
             margin: 0px;
             padding-left: 2rem;
@@ -40,7 +49,7 @@
             color: #C2BBB3;
             font-family: "Roboto Flex", sans-serif;
             font-size: 2rem;
-            font-weight: 700;
+            font-weight: 600;
             text-transform: uppercase;
         }
 
@@ -66,16 +75,32 @@
         }
 
         .container-button {
+            margin-left: 2rem;
+            margin-top: 0.7rem;
             width: 50vw;
-            min-height: auto; /* Set a minimum height */
-            max-height: auto; /* Set a maximum height */
+            min-height: auto;
+            max-height: auto;
             display: flex;
-            justify-content: space-between;
+            justify-content: space-around;
             align-items: flex-start;
             flex-wrap: wrap;
             padding: 2rem;
             gap: 2rem;
+           
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 20px;
+            border: 2px solid rgba(255, 255, 255, 0.18);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
         }
+
+        @media screen and (max-width: 750px) { 
+    .container-button {
+        width: calc(85% - 4rem);
+    }
+}
+
+
 
 
         button {
@@ -89,7 +114,11 @@
             line-height: .85rem;
             transition: transform 0.3s ease-in-out;
             border: none;
-            z-index: 1;
+            background-image: none;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
         }
 
         button:hover {
@@ -98,8 +127,15 @@
             transition-timing-function: ease-out;
             color: #220d38;
             font-weight: 800;
-            z-index: 1;
          }
+
+         @media screen and (max-width: 750px) {
+    button {
+        width: 150px; 
+        height: 75px; 
+        font-size: 1.3rem;
+    }
+}
 
      </style>
 
@@ -126,7 +162,7 @@
     <h3>Prozess Poster</h3>
        <div class="container-button">
             <button type="button" onClick="newWindow = window.open('https://ynkroo.github.io/kickweb/Konzept/Konzept-Web-Page.jpg');">Konzept</button>
-           <button type="button" onclick="window.open('https://ynkroo.github.io/kickweb/tag2/strecht-svg.html', '_blank')">Strech SVG</button>
+           <button type="button" onclick="window.open('https://ynkroo.github.io/kickweb/Animation Beispiele After Effects/Intro-Test-Animation.mp4', '_blank')">Animation</button>
            <button type="button" onclick="window.open('https://ynkroo.github.io/kickweb/Poster_v01/poster_v01.html', '_blank')">Poster v01</button>
            <button type="button" onclick="window.open('https://ynkroo.github.io/kickweb/Poster_v02/poster_v02.html', '_blank')">Poster v02</button>
        </div>
