@@ -30,22 +30,32 @@ document.addEventListener('DOMContentLoaded', function() {
       const mouseX = event.clientX;
       const mouseY = event.clientY;
 
-      // Calculate new column widths
-      const newColumns = [
-        (mouseX / window.innerWidth) * 7 + 1,
-        3,
-        2,
-        (mouseY / window.innerHeight) * 7 + 1
-      ].map(val => `${val}fr`).join(' ');
+      // Check if the mouse event occurred within the .hero container
+      const heroContainer = document.querySelector('.hero');
+      const rect = heroContainer.getBoundingClientRect();
+      if (
+        mouseX >= rect.left &&
+        mouseX <= rect.right &&
+        mouseY >= rect.top &&
+        mouseY <= rect.bottom
+      ) {
+        // Calculate new column widths
+        const newColumns = [
+          (mouseX / window.innerWidth) * 7 + 1,
+          3,
+          2,
+          (mouseY / window.innerHeight) * 7 + 1
+        ].map(val => `${val}fr`).join(' ');
 
-      // Calculate new row height, limiting it to a range of 5vh to 100vh
-      let newRowHeight = (mouseY / window.innerHeight) * 95 + 5;
-      newRowHeight = Math.max(5, Math.min(100, newRowHeight));
-      newRowHeight = `${newRowHeight}vh`;
+        // Calculate new row height, limiting it to a range of 5vh to 100vh
+        let newRowHeight = (mouseY / window.innerHeight) * 95 + 5;
+        newRowHeight = Math.max(5, Math.min(100, newRowHeight));
+        newRowHeight = `${newRowHeight}vh`;
 
-      // Update grid columns and row heights
-      mainContainer.style.gridTemplateColumns = newColumns;
-      mainContainer.style.gridAutoRows = newRowHeight;
+        // Update grid columns and row heights
+        mainContainer.style.gridTemplateColumns = newColumns;
+        mainContainer.style.gridAutoRows = newRowHeight;
+      }
 
       setTimeout(() => {
         isAnimating = false;
@@ -53,5 +63,5 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
 
-  document.addEventListener('mousemove', animateColumnsAndRows);
+  document.querySelector('.hero').addEventListener('mousemove', animateColumnsAndRows);
 });
