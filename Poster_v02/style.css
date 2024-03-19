@@ -104,7 +104,7 @@ h1{
     }
 }
 
-.container-c, .container-o, .container-d, .container-e {
+.container-m, .container-o, .container-v, .container-e {
     width: var(--container-width);
     height: var(--container-height);
     display: flex;
@@ -113,7 +113,7 @@ h1{
     overflow: hidden;
 }
 
-.c, .o, .d, .e {
+.m, .o, .v, .e {
     width: 100%;
     height: 100%;
     display: flex;
@@ -121,7 +121,7 @@ h1{
     align-items: center;
 }
 
-.c svg, .o svg, .d svg, .e svg {
+.m svg, .o svg, .v svg, .e svg {
     width: 100%;
     height: 100%;
     fill: #C2BBB3;
