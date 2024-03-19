@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animation</title>
+
+
+    <style>
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: sans-serif;
+            background-color: #101011;
+        }
+
+        .circle {
+            background-color: antiquewhite;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            display: inline-block;
+            padding: 20px;
+            color: #101011;
+
+            animation: circle-in 2s forwards, move-left 2s 2s forwards, move-right 3s 4s forwards;
+            animation-timing-function: cubic-bezier(.5,0,.38,.99);
+        }
+
+
+        @keyframes circle-in {
+
+            from {
+                transform: scale(0);
+            }
+
+            to {
+                transform: scale(1);
+            }
+
+        }
+
+        @keyframes move-left {
+            from {
+                transform: translateX(0);
+            }
+            to {
+                transform: translateX(-500px);
+            }
+        }
+
+        @keyframes move-right {
+            from {
+                transform: translateX(-500);
+            }
+            to {
+                transform: translateX(500px);
+            }
+        }
+
+
+        h1{
+            padding: 3rem;
+            font-size: 5rem;
+            color: antiquewhite;
+            mix-blend-mode: difference;
+            position: absolute;
+            top: 45%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+                }
+    
+    
+    
+    
+    
+    
+    
+    
+    </style>
+
+
+</head>
+<body>
+
+    <section class="animation">
+       
+        <div class="circle"></div>
+        <h1>ease-in-out</h1>
+
+    </section>
+
+
+    
+</body>
+</html>

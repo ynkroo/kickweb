@@ -1,0 +1,145 @@
+* {
+    margin: 0px;
+    padding: 0px;
+
+}
+
+::selection {
+    color: #220d38;
+    background-color: #ce5c16;
+    mix-blend-mode: difference;
+  }
+
+html, body {
+    background-color: #101011;
+    margin: 0rem;
+    background-image: url('https://www.transparenttextures.com/patterns/black-felt.png');
+    opacity: 1;
+    overflow: auto;
+    scroll-behavior: smooth;
+}
+
+
+p {
+    position: absolute;
+    color: #C2BBB3;
+    font-family: "Roboto Flex", sans-serif;
+    font-size: .7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    line-height: .85rem;
+}
+
+.left-corner {
+    left: 30px;
+    top: 30px;
+    z-index: 1;
+    mix-blend-mode: difference;
+}
+
+.right-corner {
+    right: 30px;
+    top: 30px;
+    text-align: right;
+    z-index: 1;
+    mix-blend-mode: difference;
+}
+
+
+.hero {
+    width: 100vw;
+    height: 100vh;
+}
+
+.info {
+    height: 50%;
+    width: 50%;
+    border: solid 1rem #C2BBB3;
+    box-sizing: border-box;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 20px;
+    border:1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    z-index: 0;
+    display: flex;
+}
+
+h1{
+    padding: 5rem;
+    color: #C2BBB3;
+    font-family: "Roboto Flex", sans-serif;
+    font-size: 8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    line-height: 7rem;
+}
+
+
+
+
+
+
+
+#main-container {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 3fr 2fr minmax(0, 1fr);
+    grid-auto-rows: 80vh;
+    gap: 0.5rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transform-origin: center;
+    width: 100vw;
+    padding: 2rem;
+    transition: grid-template-columns 0.6s cubic-bezier(.09,.5,.34,.93), grid-auto-rows 0.6s cubic-bezier(.09,.5,.34,.93);
+}
+
+
+/* Media query for tablets and phones */
+@media screen and (max-width: 1400px) {
+    #main-container {
+        grid-template-columns: minmax(0, 1fr) 1fr;
+    }
+}
+
+.container-m, .container-o, .container-v, .container-e {
+    width: var(--container-width);
+    height: var(--container-height);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.m, .o, .v, .e {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.m svg, .o svg, .v svg, .e svg {
+    width: 100%;
+    height: 100%;
+    fill: #C2BBB3;
+}
+
+
+/* Cursor */
+
+#circle {
+    width: 700px;
+    height: 700px;
+    border-radius: 50%;
+    background: radial-gradient(ellipse at center, #220d38, #ce5c16, #C2BBB3,  #C2BBB3); /* Radial gradient */
+    position: absolute;
+    display: none;
+    z-index: 1;
+    mix-blend-mode: darken;
+    pointer-events: none;
+    position: absolute;
+}
