@@ -26,7 +26,7 @@
             padding: 20px;
             color: #101011;
 
-            animation: circle-in 2s forwards, move-left 2s 2s forwards, move-right 3s 4s forwards;
+            animation: circle-in 2s forwards, move-left 2s 2s forwards, move-right 3s 4s forwards, move-center 5s 7s forwards;
             animation-timing-function: cubic-bezier(.5,0,.38,.99);
         }
 
@@ -61,17 +61,48 @@
             }
         }
 
+        @keyframes move-center {
+            from {
+                transform: translateX(500px);
+            }
+            to {
+                transform: translateX(0px);
+            }
+        }
 
-        h1{
-            padding: 3rem;
+
+        h1 {
+            padding: 0rem;
             font-size: 5rem;
             color: antiquewhite;
             mix-blend-mode: difference;
             position: absolute;
-            top: 45%;
-            left: 50%;
+            top: 40%;
+            left: 38%;
             transform: translate(-50%, -50%);
-                }
+            text-align: center;
+
+            animation: name 3s forwards, nameMoveY 3s 6s forwards;
+            animation-timing-function: cubic-bezier(.5,0,.38,.99);
+        }
+
+        @keyframes name {
+            from {
+                transform: scale(0);
+            }
+            to {
+                transform: scale(1);
+            }
+        }
+
+        @keyframes nameMoveY {
+            from {
+                transform: translateY(0);
+            }
+            to {
+                transform: translateY(200px);
+            }
+        }
     
     
     
