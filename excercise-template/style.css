@@ -1,0 +1,62 @@
+* {
+  font-family: sans-serif;
+}
+
+body {
+  margin: 0;
+}
+
+header {
+  background-color: tan;
+  padding: 1rem;
+  position: relative;
+}
+
+header::before {
+  content: "header";
+  font-size: 2rem;
+  color: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+main {
+  height: 300vh;
+  width: 100%;
+  background-color: pink;
+  position: relative;
+}
+
+main::before {
+  content: "main";
+  font-size: 2rem;
+  color: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.dynamic-element {
+  width: 50%;
+  color: black;
+  font-size: 2rem;
+  transition: all 1s;
+  padding: 2rem;
+}
+
+.first {
+  background-color: antiquewhite;
+  height: 100vh;
+}
+
+.second {
+  background-color: blueviolet;
+  height: 50vh;
+}
+
+.border-radius-transition {
+  border-radius: 1rem;
+}
