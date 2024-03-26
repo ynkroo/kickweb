@@ -145,18 +145,8 @@ h1 {
 }
 
 .titel-ani {
-  animation: titelUp 2s 2s forwards, titelOpacity 2s 2s forwards;
+  animation: titelOpacity 2s forwards;
   animation-timing-function: cubic-bezier(0.5, 0, 0.38, 0.99);
-}
-
-@keyframes titelUp {
-  from {
-    transform: translateY(200px);
-  }
-
-  to {
-    transform: translateY(0px);
-  }
 }
 
 @keyframes titelOpacity {
