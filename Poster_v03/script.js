@@ -1,25 +1,26 @@
-document.addEventListener('DOMContentLoaded', function() {
-    const circle = document.getElementById('circle');
+document.addEventListener("DOMContentLoaded", function () {
+  const circle = document.getElementById("circle");
 
-    document.addEventListener('mousemove', function(e) {
-        const x = e.clientX;
-        const y = e.clientY;
+  document.addEventListener("mousemove", function (e) {
+    const x = e.clientX;
+    const y = e.clientY;
 
-        const circleSize = parseInt(window.getComputedStyle(circle).getPropertyValue('width')); // Get circle size
+    const circleSize = parseInt(
+      window.getComputedStyle(circle).getPropertyValue("width")
+    ); // Get circle size
 
-        // Calculate the position to center the circle with the mouse pointer
-        const circleX = x - circleSize / 2 + window.pageXOffset;
-        const circleY = y - circleSize / 2 + window.pageYOffset;
+    // Calculate the position to center the circle with the mouse pointer
+    const circleX = x - circleSize / 2 + window.pageXOffset;
+    const circleY = y - circleSize / 2 + window.pageYOffset;
 
-        circle.style.display = 'block';
-        circle.style.left = circleX + 'px';
-        circle.style.top = circleY + 'px';
-    });
+    circle.style.display = "block";
+    circle.style.left = circleX + "px";
+    circle.style.top = circleY + "px";
+  });
 });
 
-
-document.addEventListener('DOMContentLoaded', function() {
-  const mainContainer = document.querySelector('#main-container');
+document.addEventListener("DOMContentLoaded", function () {
+  const mainContainer = document.querySelector("#main-container");
   const animationDuration = 20; // in milliseconds
   let isAnimating = false;
 
@@ -31,7 +32,7 @@ document.addEventListener('DOMContentLoaded', function() {
       const mouseY = event.clientY;
 
       // Check if the mouse event occurred within the .hero container
-      const heroContainer = document.querySelector('.hero');
+      const heroContainer = document.querySelector(".hero");
       const rect = heroContainer.getBoundingClientRect();
       if (
         mouseX >= rect.left &&
@@ -40,17 +41,26 @@ document.addEventListener('DOMContentLoaded', function() {
         mouseY <= rect.bottom
       ) {
         // Calculate new column widths
-        const newColumns = [
-          (mouseX / window.innerWidth) * 7 + 1,
-          3,
-          2,
-          (mouseY / window.innerHeight) * 7 + 1
-        ].map(val => `${val}fr`).join(' ');
+        let newColumns, newRowHeight;
+        if (window.innerWidth <= 768) {
+          // For phone and tablet screens
+          newColumns = "1fr 1fr";
+          newRowHeight = "50vh";
+        } else {
+          newColumns = [
+            (mouseX / window.innerWidth) * 7 + 1,
+            3,
+            2,
+            (mouseY / window.innerHeight) * 7 + 1,
+          ]
+            .map((val) => `${val}fr`)
+            .join(" ");
 
-        // Calculate new row height, limiting it to a range of 5vh to 100vh
-        let newRowHeight = (mouseY / window.innerHeight) * 95 + 5;
-        newRowHeight = Math.max(5, Math.min(100, newRowHeight));
-        newRowHeight = `${newRowHeight}vh`;
+          // Calculate new row height, limiting it to a range of 5vh to 100vh
+          newRowHeight = (mouseY / window.innerHeight) * 95 + 5;
+          newRowHeight = Math.max(5, Math.min(100, newRowHeight));
+          newRowHeight = `${newRowHeight}vh`;
+        }
 
         // Update grid columns and row heights
         mainContainer.style.gridTemplateColumns = newColumns;
@@ -63,5 +73,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
 
-  document.querySelector('.hero').addEventListener('mousemove', animateColumnsAndRows);
+  document
+    .querySelector(".hero")
+    .addEventListener("mousemove", animateColumnsAndRows);
 });
