@@ -21,58 +21,55 @@ document.addEventListener("DOMContentLoaded", function () {
 
 document.addEventListener("DOMContentLoaded", function () {
   const mainContainer = document.querySelector("#main-container");
-  const animationDuration = 20; // in milliseconds
-  let isAnimating = false;
+  const animationDuration = 20; // Duration of the animation in milliseconds
+  let isAnimating = false; // Flag to prevent animation overlap
 
+  // Function to animate the columns and rows
   function animateColumnsAndRows(event) {
+    // Only animate if no current animation is in progress
     if (!isAnimating) {
       isAnimating = true;
+      const mouseX = event.clientX; // Get mouse X-coordinate
 
-      const mouseX = event.clientX;
-      const mouseY = event.clientY;
-
-      // Check if the mouse event occurred within the .hero container
+      // Select the .hero container and get its dimensions
       const heroContainer = document.querySelector(".hero");
       const rect = heroContainer.getBoundingClientRect();
-      if (
-        mouseX >= rect.left &&
-        mouseX <= rect.right &&
-        mouseY >= rect.top &&
-        mouseY <= rect.bottom
-      ) {
-        // Calculate new column widths
-        let newColumns, newRowHeight;
+
+      // Check if the mouse event occurred within the .hero container
+      if (mouseX >= rect.left && mouseX <= rect.right) {
+        let newColumns; // Variable to store the new column sizes
+
+        // Adjust the grid based on screen width
         if (window.innerWidth <= 768) {
-          // For phone and tablet screens
+          // For phone and tablet screens, use a simple 2-column layout
           newColumns = "1fr 1fr";
-          newRowHeight = "50vh";
         } else {
+          // For larger screens, dynamically adjust the column sizes based on mouse position
           newColumns = [
             (mouseX / window.innerWidth) * 7 + 1,
             3,
             2,
-            (mouseY / window.innerHeight) * 7 + 1,
+            7 - (mouseX / window.innerWidth) * 7 + 1, // Ensure total fractions remain consistent
           ]
             .map((val) => `${val}fr`)
             .join(" ");
 
-          // Calculate new row height, limiting it to a range of 5vh to 100vh
-          newRowHeight = (mouseY / window.innerHeight) * 95 + 5;
-          newRowHeight = Math.max(5, Math.min(100, newRowHeight));
-          newRowHeight = `${newRowHeight}vh`;
+          // Set row height to 100vh for larger screens
+          mainContainer.style.gridAutoRows = "100vh";
         }
 
-        // Update grid columns and row heights
+        // Update the grid template columns with the new sizes
         mainContainer.style.gridTemplateColumns = newColumns;
-        mainContainer.style.gridAutoRows = newRowHeight;
       }
 
+      // Reset the animation flag after the specified duration
       setTimeout(() => {
         isAnimating = false;
       }, animationDuration);
     }
   }
 
+  // Attach the animation function to the mousemove event on the .hero container
   document
     .querySelector(".hero")
     .addEventListener("mousemove", animateColumnsAndRows);
