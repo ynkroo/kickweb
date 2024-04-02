@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Matter.js Full Viewport Example</title>
+    <script src="https://cdn.jsdelivr.net/npm/matter-js@0.16.0/build/matter.min.js"></script>
+  </head>
+  <body style="margin: 0; overflow: hidden">
+    <div id="world"></div>
+
+    <script>
+      // Module aliases
+      var Engine = Matter.Engine,
+        Render = Matter.Render,
+        World = Matter.World,
+        Bodies = Matter.Bodies,
+        Mouse = Matter.Mouse,
+        MouseConstraint = Matter.MouseConstraint;
+
+      // Create an engine
+      var engine = Engine.create();
+
+      // Initial window dimensions
+      var viewportWidth = window.innerWidth;
+      var viewportHeight = window.innerHeight;
+
+      // Create a renderer
+      var render = Render.create({
+        element: document.getElementById("world"),
+        engine: engine,
+        options: {
+          width: viewportWidth,
+          height: viewportHeight,
+          wireframes: false,
+          background: "transparent",
+        },
+      });
+
+      // Create ground
+      var ground = Bodies.rectangle(
+        viewportWidth / 2,
+        viewportHeight,
+        viewportWidth,
+        60,
+        { isStatic: true }
+      );
+      World.add(engine.world, [ground]);
+
+      // Add mouse control
+      var mouse = Mouse.create(render.canvas),
+        mouseConstraint = MouseConstraint.create(engine, {
+          mouse: mouse,
+          constraint: {
+            stiffness: 0.2,
+            render: {
+              visible: false,
+            },
+          },
+        });
+
+      World.add(engine.world, mouseConstraint);
+
+      // Ensure the renderer stays updated with mouse events
+      render.mouse = mouse;
+
+      // Click event to add new shapes
+      render.canvas.addEventListener("mousedown", function (event) {
+        var x = event.clientX;
+        var y = event.clientY;
+        // Randomly add a circle or a rectangle
+        if (Math.random() > 0.5) {
+          var circle = Bodies.circle(x, y, 20);
+          World.add(engine.world, circle);
+        } else {
+          var box = Bodies.rectangle(x, y, 40, 40);
+          World.add(engine.world, box);
+        }
+      });
+
+      // Resize event to adjust canvas size
+      window.addEventListener("resize", function () {
+        render.canvas.width = window.innerWidth;
+        render.canvas.height = window.innerHeight;
+        render.options.width = window.innerWidth;
+        render.options.height = window.innerHeight;
+
+        // Re-position the ground to adapt to new dimensions
+        Matter.Body.setPosition(ground, {
+          x: window.innerWidth / 2,
+          y: window.innerHeight + 20,
+        });
+      });
+
+      // Run the engine
+      Engine.run(engine);
+
+      // Run the renderer
+      Render.run(render);
+    </script>
+  </body>
+</html>
