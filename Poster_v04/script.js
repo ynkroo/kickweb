@@ -46,10 +46,10 @@ document.addEventListener("DOMContentLoaded", function () {
         } else {
           // For larger screens, dynamically adjust the column sizes based on mouse position
           newColumns = [
-            (mouseX / window.innerWidth) * 8 + 1,
-            (mouseX / window.innerWidth) * 2 + 1,
-            5 - (mouseX / window.innerWidth) * 4 + 1,
-            8 - (mouseX / window.innerWidth) * 8 + 1, // Ensure total fractions remain consistent
+            (mouseX / window.innerWidth) * 10 + 1,
+            (mouseX / window.innerWidth) * 3 + 1,
+            3 - (mouseX / window.innerWidth) * 3 + 1,
+            4 - (mouseX / window.innerWidth) * 4 + 1, // Ensure total fractions remain consistent
           ]
             .map((val) => `${val}fr`)
             .join(" ");

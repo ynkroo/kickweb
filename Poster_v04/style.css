@@ -109,8 +109,8 @@ p {
 /* Cursor */
 
 #circle {
-  width: 700px;
-  height: 700px;
+  width: 1200px;
+  height: 1200px;
   border-radius: 50%;
   background: radial-gradient(
     ellipse at center,
