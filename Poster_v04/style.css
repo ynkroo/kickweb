@@ -11,9 +11,9 @@
 
 html,
 body {
-  background-color: #101011;
-  margin: 0rem;
-  background-image: url("https://www.transparenttextures.com/patterns/black-felt.png");
+  background: #101011
+    url("https://www.transparenttextures.com/patterns/black-felt.png");
+  margin: 0;
   opacity: 1;
   overflow: auto;
   scroll-behavior: smooth;
@@ -23,11 +23,8 @@ body {
 p {
   position: absolute;
   color: #c2bbb3;
-  font-family: "Roboto Flex", sans-serif;
-  font-size: 1rem;
-  font-weight: 700;
+  font: 700 1rem/1.2rem "Roboto Flex", sans-serif;
   text-transform: uppercase;
-  line-height: 1.2rem;
 }
 
 .left-corner {
@@ -67,7 +64,6 @@ p {
     grid-auto-rows 0.6s cubic-bezier(0.09, 0.5, 0.34, 0.93);
 }
 
-/* Media query for tablets and phones */
 @media screen and (max-width: 1400px) {
   #main-container {
     grid-template-columns: minmax(0, 1fr) 1fr;
@@ -109,22 +105,12 @@ p {
 /* Cursor */
 
 #circle {
-  width: 1200px;
-  height: 1200px;
   border-radius: 50%;
-  background: radial-gradient(
-    ellipse at center,
-    #220d38,
-    #ce5c16,
-    #c2bbb3,
-    #c2bbb3
-  ); /* Radial gradient */
-  position: absolute;
+  position: fixed;
   display: none;
-  z-index: 1;
+  z-index: 10000;
   mix-blend-mode: darken;
   pointer-events: none;
-  position: absolute;
 }
 
 .titel {
