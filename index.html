@@ -38,7 +38,7 @@
 
       @media screen and (max-width: 750px) {
         h1 {
-          font-size: 10rem; /* Adjusted font size for smaller screens */
+          font-size: 8rem;
         }
       }
 
@@ -51,6 +51,12 @@
         font-size: 2rem;
         font-weight: 600;
         text-transform: uppercase;
+      }
+
+      @media screen and (max-width: 750px) {
+        h3 {
+          font-size: 1.5rem;
+        }
       }
 
       .left-corner {
@@ -68,16 +74,23 @@
         position: absolute;
         color: #c2bbb3;
         font-family: "Roboto Flex", sans-serif;
-        font-size: 0.7rem;
+        font-size: 0.9rem;
         font-weight: 700;
         text-transform: uppercase;
-        line-height: 0.85rem;
+        line-height: 1rem;
+      }
+
+      @media screen and (max-width: 750px) {
+        p {
+          font-size: 0.7rem;
+          line-height: 0.85rem;
+        }
       }
 
       .container-button {
         margin-left: 2rem;
         margin-top: 0.7rem;
-        width: 65vw;
+        width: 55vw;
         min-height: auto;
         max-height: auto;
         display: flex;
@@ -96,7 +109,7 @@
 
       @media screen and (max-width: 750px) {
         .container-button {
-          width: calc(85% - 4rem);
+          width: calc(100% - 8rem);
         }
       }
 
@@ -128,8 +141,8 @@
 
       @media screen and (max-width: 750px) {
         button {
-          width: 150px;
-          height: 75px;
+          width: 110px;
+          height: 70px;
           font-size: 1.3rem;
         }
       }
@@ -180,6 +193,12 @@
           onclick="window.open('https://ynkroo.github.io/kickweb/tag5/animation.html', '_blank')"
         >
           Tag 5
+        </button>
+        <button
+          type="button"
+          onclick="window.open('https://ynkroo.github.io/kickweb/tag6/circles.html', '_blank')"
+        >
+          Tag 6
         </button>
       </div>
     </div>
