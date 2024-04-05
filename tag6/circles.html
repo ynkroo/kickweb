@@ -9,6 +9,10 @@
       html {
         height: 100%;
         margin: 0;
+        background: #101011
+          url("https://www.transparenttextures.com/patterns/black-felt.png");
+        margin: 0;
+        opacity: 1;
       }
 
       .circle-container {
@@ -21,11 +25,44 @@
       .circle {
         position: absolute;
         border-radius: 50%;
-        background-color: #000;
+        background-color: #c2bbb3;
         animation: fall linear infinite;
+        mix-blend-mode: difference;
+      }
+      .title {
+        position: absolute;
+        width: 100%;
+        top: 50%;
+        transform: translateY(-50%);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 2;
+        mix-blend-mode: difference;
       }
 
-      /* Size variations */
+      h1 {
+        padding: 0;
+        margin: 0;
+        color: #c2bbb3;
+        font-family: "Roboto Flex", sans-serif;
+        font-size: 11vw;
+        font-weight: 700;
+        text-transform: lowercase;
+        line-height: 6.5vw;
+        animation: grow 5s infinite alternate ease-in-out;
+      }
+
+      @keyframes grow {
+        from {
+          transform: scale(1);
+        }
+        to {
+          transform: scale(2);
+        }
+      }
+
+      /* versch. Grössen */
       .small {
         width: 30px;
         height: 30px;
@@ -39,7 +76,7 @@
         height: 200px;
       }
 
-      /* Randomized starting positions */
+      /* Unterschiedliche Pos. */
       .circle1 {
         left: 10%;
         animation-duration: 4s;
@@ -78,7 +115,10 @@
       <div class="circle large circle3"></div>
       <div class="circle small circle4"></div>
       <div class="circle medium circle5"></div>
-      <!-- Add more circles as desired -->
+
+      <div class="title">
+        <h1>Gravity</h1>
+      </div>
     </div>
   </body>
 </html>
