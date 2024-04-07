@@ -198,3 +198,7 @@ h1 {
   background: #212122;
   transition: ease-in-out 200ms;
 }
+
+.box img {
+  position: absolute;
+}
