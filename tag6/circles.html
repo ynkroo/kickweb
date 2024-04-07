@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Circles with Simple Gravity Effect</title>
     <style>
+      ::selection {
+        color: #220d38;
+        background-color: #ce5c16;
+        mix-blend-mode: difference;
+      }
       body,
       html {
         height: 100%;
@@ -13,6 +18,27 @@
           url("https://www.transparenttextures.com/patterns/black-felt.png");
         margin: 0;
         opacity: 1;
+      }
+
+      .left-corner {
+        left: 2.5rem;
+        top: 30px;
+      }
+
+      .right-corner {
+        right: 2.5rem;
+        top: 30px;
+        text-align: right;
+      }
+
+      p {
+        position: absolute;
+        color: #ce5c16;
+        font-family: "Roboto Flex", sans-serif;
+        font-size: 0.9rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        line-height: 1.2rem;
       }
 
       .circle-container {
@@ -25,9 +51,20 @@
       .circle {
         position: absolute;
         border-radius: 50%;
-        background-color: #c2bbb3;
+        background-color: #ce5c16;
         animation: fall linear infinite;
         mix-blend-mode: difference;
+      }
+      .circlebig {
+        position: absolute;
+        border-radius: 50%;
+        background-color: #ce5c16;
+        animation: fall linear infinite;
+        mix-blend-mode: difference;
+        width: 900px;
+        height: 900px;
+        left: 25%;
+        top: 5%;
       }
       .title {
         position: absolute;
@@ -44,7 +81,7 @@
       h1 {
         padding: 0;
         margin: 0;
-        color: #c2bbb3;
+        color: #ce5c16;
         font-family: "Roboto Flex", sans-serif;
         font-size: 11vw;
         font-weight: 700;
@@ -109,12 +146,23 @@
     </style>
   </head>
   <body>
+    <header>
+      <p class="left-corner">
+        KIWEB.F2401 <br />
+        Yannick Röösli
+      </p>
+      <p class="right-corner">
+        Web development <br />
+        Digital Ideation
+      </p>
+    </header>
     <div class="circle-container">
       <div class="circle small circle1"></div>
       <div class="circle medium circle2"></div>
       <div class="circle large circle3"></div>
       <div class="circle small circle4"></div>
       <div class="circle medium circle5"></div>
+      <div class="circlebig"></div>
 
       <div class="title">
         <h1>Gravity</h1>
