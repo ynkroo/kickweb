@@ -1,10 +1,12 @@
 window.addEventListener("load", function () {
-  // Fetch our canvas
   var canvas = document.getElementById("world");
 
-  // Initial window dimensions
+  // Window size
   var viewportWidth = window.innerWidth;
-  var viewportHeight = window.innerHeight;
+  var viewportHeight = window.innerHeight * 1.5;
+  var engine = Matter.Engine.create({
+    enableSleeping: true, // This enables the sleeping feature
+  });
 
   // Setup Matter JS
   var engine = Matter.Engine.create();
@@ -14,7 +16,7 @@ window.addEventListener("load", function () {
     engine: engine,
     options: {
       width: viewportWidth,
-      height: viewportHeight, // Updated to use viewportHeight directly
+      height: viewportHeight,
       background: "transparent",
       wireframes: false,
       showAngleIndicator: false,
@@ -24,13 +26,13 @@ window.addEventListener("load", function () {
   // Function to add a ball at a specific location
   function addBall(x, y) {
     var newBall = Matter.Bodies.circle(x, y, 100, {
-      density: 0.04,
-      friction: 0.1,
+      density: 0.1,
+      friction: 0.15,
       frictionAir: 0.005,
-      restitution: 0.5,
+      restitution: 0.3,
       render: {
         fillStyle: "transparent",
-        strokeStyle: "#c2bbb3",
+        strokeStyle: "#ce5c16",
         lineWidth: 5,
       },
     });
@@ -40,20 +42,35 @@ window.addEventListener("load", function () {
   // Function to add a square at a specific location
   function addSquare(x, y) {
     var square = Matter.Bodies.rectangle(x, y, 100, 100, {
-      density: 0.04,
-      friction: 0.01,
+      density: 0.1,
+      friction: 0.15,
       frictionAir: 0.005,
-      restitution: 0.5,
+      restitution: 0.3,
       render: {
         fillStyle: "transparent",
-        strokeStyle: "#c2bbb3",
+        strokeStyle: "#1688ce",
         lineWidth: 5,
       },
     });
     Matter.World.add(world, square);
   }
 
-  // Add event listener for mouse clicks to alternate shapes
+  // Function to add a triangle at a specific location
+  function addTriangle(x, y) {
+    var newTriangle = Matter.Bodies.polygon(x, y, 3, 120, {
+      density: 0.1,
+      friction: 0.15,
+      frictionAir: 0.005,
+      restitution: 0.3,
+      render: {
+        fillStyle: "transparent",
+        strokeStyle: "#16ce5c",
+        lineWidth: 5,
+      },
+    });
+    Matter.World.add(world, newTriangle);
+  }
+
   var isNextShapeBall = true;
   document.addEventListener("mousedown", function (event) {
     var x = event.clientX;
@@ -68,6 +85,63 @@ window.addEventListener("load", function () {
     isNextShapeBall = !isNextShapeBall;
   });
 
+  // Adjustments for a wider V that touches the side walls
+  const angle = 87 * (Math.PI / 180); // Adjusting back for clarity, but you can modify this as needed
+  const lineLength = Math.sqrt(
+    Math.pow(viewportHeight, 2) + Math.pow(viewportWidth / 2, 2)
+  ); // Length to ensure touching the walls
+
+  // Calculate positions based on the viewport dimensions and desired angle
+  const middleY = viewportHeight / 2 + (Math.sin(angle) * lineLength) / 3; // Adjust based on your requirements
+
+  // Left side of the V
+  var leftSide = Matter.Bodies.rectangle(
+    0, // Start from the left edge
+    middleY - (Math.sin(angle) * lineLength) / 7,
+    5,
+    lineLength,
+    {
+      isStatic: true,
+      angle: -angle, // Angle adjusted to match the new calculation
+      render: {
+        fillStyle: "#c2bbb3",
+        visible: true,
+      },
+    }
+  );
+
+  // Right side of the V
+  var rightSide = Matter.Bodies.rectangle(
+    viewportWidth, // Start from the right edge
+    middleY - (Math.sin(angle) * lineLength) / 2,
+    5,
+    lineLength,
+    {
+      isStatic: true,
+      angle: angle, // Angle adjusted to match the new calculation
+      render: {
+        fillStyle: "#c2bbb3",
+        visible: true,
+      },
+    }
+  );
+
+  Matter.World.add(world, [leftSide, rightSide]);
+
+  // Create and add walls
+  var rightWall = Matter.Bodies.rectangle(
+    viewportWidth,
+    viewportHeight / 2,
+    10,
+    viewportHeight,
+    {
+      isStatic: true,
+      render: {
+        fillStyle: "transparent",
+        visible: true,
+      },
+    }
+  );
   // Create the floor
   var floor = Matter.Bodies.rectangle(
     viewportWidth / 2,
@@ -82,9 +156,23 @@ window.addEventListener("load", function () {
       },
     }
   );
-
-  // Add the floor to the world
   Matter.World.add(world, floor);
+
+  var leftWall = Matter.Bodies.rectangle(
+    0,
+    viewportHeight / 2,
+    10,
+    viewportHeight,
+    {
+      isStatic: true,
+      render: {
+        fillStyle: "transparent",
+        visible: true,
+      },
+    }
+  );
+
+  Matter.World.add(world, [rightWall, leftWall]);
 
   // Make interactive
   var mouseConstraint = Matter.MouseConstraint.create(engine, {
@@ -96,39 +184,6 @@ window.addEventListener("load", function () {
       stiffness: 0.8,
     },
   });
-
-  // Create and add walls
-  var rightWall = Matter.Bodies.rectangle(
-    viewportWidth,
-    viewportHeight / 2,
-    10,
-    viewportHeight,
-    {
-      isStatic: true,
-      render: {
-        fillStyle: "#c2bbb3",
-        visible: true,
-      },
-    }
-  );
-
-  var leftWall = Matter.Bodies.rectangle(
-    0,
-    viewportHeight / 2,
-    10,
-    viewportHeight,
-    {
-      isStatic: true,
-      render: {
-        fillStyle: "#c2bbb3",
-        visible: true,
-      },
-    }
-  );
-
-  Matter.World.add(world, [rightWall, leftWall]);
-
-  // Add mouse constraint to the world
   Matter.World.add(world, mouseConstraint);
 
   // Remove scroll events from the mouse constraint
@@ -141,13 +196,11 @@ window.addEventListener("load", function () {
     mouseConstraint.mouse.mousewheel
   );
 
-  // Function to check if canvas is fully visible
   function isCanvasFullyVisible() {
     var rect = canvas.getBoundingClientRect();
-    return rect.top < window.innerHeight && rect.bottom >= 0;
+    return rect.top >= 0 && rect.bottom <= window.innerHeight;
   }
 
-  // Improved function to start the falling process if visible
   function startFallingIfVisible() {
     if (isCanvasFullyVisible()) {
       Matter.Events.trigger(engine, "gravityFalling", { x: 0, y: 1 });
@@ -155,11 +208,34 @@ window.addEventListener("load", function () {
     }
   }
 
-  // Use the improved function as the scroll event listener
   window.addEventListener("scroll", startFallingIfVisible);
-
-  // Also check and possibly trigger falling when the page initially loads
   startFallingIfVisible();
+
+  // Initialize a counter to cycle through shapes
+  let nextShape = 0; // 0 for ball, 1 for square, 2 for triangle
+
+  // Automatically add shapes at a regular interval
+  setInterval(function () {
+    var x = Math.random() * viewportWidth;
+    var y = 20; // Starting Y position for shapes
+
+    switch (nextShape) {
+      case 0:
+        addBall(x, y);
+        break;
+      case 1:
+        addSquare(x, y);
+        break;
+      case 2:
+        addTriangle(x, y); // Assuming you've added the addTriangle function as previously described
+        break;
+      default:
+        break;
+    }
+
+    // Update nextShape to cycle through the three shapes
+    nextShape = (nextShape + 1) % 3; // This will cycle nextShape through 0, 1, 2
+  }, 1500); // Interval set to 1000 milliseconds (1 second)
 
   // Start the engine and renderer
   Matter.Engine.run(engine);
