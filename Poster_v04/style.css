@@ -48,13 +48,6 @@ p {
   width: 100vw;
   height: 100vh;
 }
-.titel {
-  height: 100vh;
-  width: 100vw;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 
 #main-container {
   display: grid;
@@ -143,4 +136,28 @@ h1 {
   justify-content: center;
   align-items: center;
   height: 90vh;
+}
+
+#world {
+  margin-top: 0.4rem;
+}
+.titel {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #16ce5c;
+}
+
+.text {
+  font-family: "Roboto Flex", sans-serif;
+  font-optical-sizing: auto;
+  color: #c2bbb3;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 21rem;
+  mix-blend-mode: difference;
+  font-variation-settings: "slnt" 0, "wdth" 100, "GRAD" 0;
+  transition: font-weight 10ms;
 }

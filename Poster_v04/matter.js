@@ -3,14 +3,15 @@ window.addEventListener("load", function () {
 
   // Window size
   var viewportWidth = window.innerWidth;
-  var viewportHeight = window.innerHeight * 1.5;
+  var viewportHeight = window.innerHeight * 1.6;
+
+  // Setup Matter JS Engine
   var engine = Matter.Engine.create({
-    enableSleeping: true, // This enables the sleeping feature
+    enableSleeping: false,
   });
 
-  // Setup Matter JS
-  var engine = Matter.Engine.create();
   var world = engine.world;
+
   var render = Matter.Render.create({
     canvas: canvas,
     engine: engine,
@@ -23,49 +24,71 @@ window.addEventListener("load", function () {
     },
   });
 
-  // Function to add a ball at a specific location
-  function addBall(x, y) {
-    var newBall = Matter.Bodies.circle(x, y, 100, {
+  // Calculate the total area of the canvas
+  var totalArea = viewportWidth * viewportHeight;
+  var occupiedArea = 0;
+
+  // Function to update the occupied area
+  function updateOccupiedArea(shapeArea) {
+    occupiedArea += shapeArea;
+  }
+
+  // Function to add a ball at a specific location with a specific size
+  function addBall(x, y, size) {
+    var radius = size / 2;
+    var area = Math.PI * radius * radius;
+    updateOccupiedArea(area);
+
+    var newBall = Matter.Bodies.circle(x, y, radius, {
       density: 0.1,
       friction: 0.15,
       frictionAir: 0.005,
-      restitution: 0.3,
+      frictionStatic: 2,
+      restitution: 0.6,
       render: {
-        fillStyle: "transparent",
-        strokeStyle: "#ce5c16",
-        lineWidth: 5,
+        fillStyle: "#ce5c16",
+        strokeStyle: "#101011",
+        lineWidth: 3,
       },
     });
     Matter.World.add(world, newBall);
   }
 
-  // Function to add a square at a specific location
-  function addSquare(x, y) {
-    var square = Matter.Bodies.rectangle(x, y, 100, 100, {
-      density: 0.1,
+  // Function to add a square at a specific location with a specific size
+  function addSquare(x, y, size) {
+    var area = size * size;
+    updateOccupiedArea(area);
+
+    var square = Matter.Bodies.rectangle(x, y, size, size, {
+      density: 0.5,
       friction: 0.15,
       frictionAir: 0.005,
+      frictionStatic: 4,
       restitution: 0.3,
       render: {
-        fillStyle: "transparent",
-        strokeStyle: "#1688ce",
-        lineWidth: 5,
+        fillStyle: "#1688ce",
+        strokeStyle: "#101011",
+        lineWidth: 3,
       },
     });
     Matter.World.add(world, square);
   }
 
-  // Function to add a triangle at a specific location
-  function addTriangle(x, y) {
-    var newTriangle = Matter.Bodies.polygon(x, y, 3, 120, {
-      density: 0.1,
+  // Function to add a triangle at a specific location with a specific size
+  function addTriangle(x, y, size) {
+    var area = (Math.sqrt(3) / 4) * size * size;
+    updateOccupiedArea(area);
+
+    var newTriangle = Matter.Bodies.polygon(x, y, 3, size / Math.sqrt(3), {
+      density: 0.15,
       friction: 0.15,
       frictionAir: 0.005,
-      restitution: 0.3,
+      frictionStatic: 3,
+      restitution: 0.5,
       render: {
-        fillStyle: "transparent",
-        strokeStyle: "#16ce5c",
-        lineWidth: 5,
+        fillStyle: "#16ce5c",
+        strokeStyle: "#101011",
+        lineWidth: 3,
       },
     });
     Matter.World.add(world, newTriangle);
@@ -75,34 +98,39 @@ window.addEventListener("load", function () {
   document.addEventListener("mousedown", function (event) {
     var x = event.clientX;
     var y = event.clientY;
+    var size = Math.random() * (280 - 90) + 100; // Generate a random size between 50px and 180px
 
-    if (isNextShapeBall) {
-      addBall(x, y);
-    } else {
-      addSquare(x, y);
+    switch (nextShape) {
+      case 0:
+        addBall(x, y, size);
+        break;
+      case 1:
+        addSquare(x, y, size);
+        break;
+      case 2:
+        addTriangle(x, y, size);
+        break;
+      default:
+        break;
     }
-
-    isNextShapeBall = !isNextShapeBall;
   });
 
-  // Adjustments for a wider V that touches the side walls
-  const angle = 87 * (Math.PI / 180); // Adjusting back for clarity, but you can modify this as needed
+  const angle = 85 * (Math.PI / 180); // Adjusting back for clarity, but you can modify this as needed
   const lineLength = Math.sqrt(
     Math.pow(viewportHeight, 2) + Math.pow(viewportWidth / 2, 2)
-  ); // Length to ensure touching the walls
-
+  );
   // Calculate positions based on the viewport dimensions and desired angle
   const middleY = viewportHeight / 2 + (Math.sin(angle) * lineLength) / 3; // Adjust based on your requirements
 
   // Left side of the V
   var leftSide = Matter.Bodies.rectangle(
-    0, // Start from the left edge
+    0,
     middleY - (Math.sin(angle) * lineLength) / 7,
-    5,
+    30,
     lineLength,
     {
       isStatic: true,
-      angle: -angle, // Angle adjusted to match the new calculation
+      angle: -angle,
       render: {
         fillStyle: "#c2bbb3",
         visible: true,
@@ -112,13 +140,13 @@ window.addEventListener("load", function () {
 
   // Right side of the V
   var rightSide = Matter.Bodies.rectangle(
-    viewportWidth, // Start from the right edge
+    viewportWidth,
     middleY - (Math.sin(angle) * lineLength) / 2,
-    5,
+    30,
     lineLength,
     {
       isStatic: true,
-      angle: angle, // Angle adjusted to match the new calculation
+      angle: angle,
       render: {
         fillStyle: "#c2bbb3",
         visible: true,
@@ -127,6 +155,22 @@ window.addEventListener("load", function () {
   );
 
   Matter.World.add(world, [leftSide, rightSide]);
+
+  // Create the floor
+  var floor = Matter.Bodies.rectangle(
+    viewportWidth / 2,
+    viewportHeight,
+    viewportWidth,
+    5,
+    {
+      isStatic: true,
+      render: {
+        fillStyle: "#c2bbb3",
+        visible: false,
+      },
+    }
+  );
+  Matter.World.add(world, floor);
 
   // Create and add walls
   var rightWall = Matter.Bodies.rectangle(
@@ -142,21 +186,6 @@ window.addEventListener("load", function () {
       },
     }
   );
-  // Create the floor
-  var floor = Matter.Bodies.rectangle(
-    viewportWidth / 2,
-    viewportHeight,
-    viewportWidth,
-    10,
-    {
-      isStatic: true,
-      render: {
-        fillStyle: "#c2bbb3",
-        visible: true,
-      },
-    }
-  );
-  Matter.World.add(world, floor);
 
   var leftWall = Matter.Bodies.rectangle(
     0,
@@ -211,33 +240,34 @@ window.addEventListener("load", function () {
   window.addEventListener("scroll", startFallingIfVisible);
   startFallingIfVisible();
 
-  // Initialize a counter to cycle through shapes
-  let nextShape = 0; // 0 for ball, 1 for square, 2 for triangle
+  let nextShape = 0;
 
-  // Automatically add shapes at a regular interval
-  setInterval(function () {
-    var x = Math.random() * viewportWidth;
-    var y = 20; // Starting Y position for shapes
+  setTimeout(function () {
+    var shapeInterval = setInterval(function () {
+      if (occupiedArea / totalArea < 0.6) {
+        // Check if less than 60% of the canvas is occupied
+        var x = Math.random() * viewportWidth;
+        var y = -100;
+        var size = Math.random() * (200 - 60) + 60; // Generate a random size between 60px and 200px
 
-    switch (nextShape) {
-      case 0:
-        addBall(x, y);
-        break;
-      case 1:
-        addSquare(x, y);
-        break;
-      case 2:
-        addTriangle(x, y); // Assuming you've added the addTriangle function as previously described
-        break;
-      default:
-        break;
-    }
+        switch (nextShape) {
+          case 0:
+            addBall(x, y, size);
+            break;
+          case 1:
+            addSquare(x, y, size);
+            break;
+          case 2:
+            addTriangle(x, y, size);
+            break;
+        }
+        nextShape = (nextShape + 1) % 3;
+      } else {
+        clearInterval(shapeInterval);
+      }
+    }, 450);
+  }, 10000); // 15000 milliseconds = 15 seconds
 
-    // Update nextShape to cycle through the three shapes
-    nextShape = (nextShape + 1) % 3; // This will cycle nextShape through 0, 1, 2
-  }, 1500); // Interval set to 1000 milliseconds (1 second)
-
-  // Start the engine and renderer
   Matter.Engine.run(engine);
   Matter.Render.run(render);
 });
