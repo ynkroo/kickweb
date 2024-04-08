@@ -132,7 +132,7 @@ window.addEventListener("load", function () {
       isStatic: true,
       angle: -angle,
       render: {
-        fillStyle: "#c2bbb3",
+        fillStyle: "#b82ebd",
         visible: true,
       },
     }
@@ -148,7 +148,7 @@ window.addEventListener("load", function () {
       isStatic: true,
       angle: angle,
       render: {
-        fillStyle: "#c2bbb3",
+        fillStyle: "#b82ebd",
         visible: true,
       },
     }

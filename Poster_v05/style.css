@@ -22,7 +22,7 @@ body {
 
 p {
   position: absolute;
-  color: #c2bbb3;
+  color: #fff;
   font: 700 1rem/1.2rem "Roboto Flex", sans-serif;
   text-transform: uppercase;
 }
@@ -93,13 +93,25 @@ p {
   align-items: center;
 }
 
-.m svg,
-.o svg,
-.v svg,
+.m svg {
+  width: 100%;
+  height: 100%;
+  fill: #16ce5c;
+}
+.o svg {
+  width: 100%;
+  height: 100%;
+  fill: #1688ce;
+}
+.v svg {
+  width: 100%;
+  height: 100%;
+  fill: #ce5c16;
+}
 .e svg {
   width: 100%;
   height: 100%;
-  fill: #c2bbb3;
+  fill: #b82ebd;
 }
 
 /* Cursor */
@@ -147,17 +159,17 @@ h1 {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #16ce5c;
+  background-color: #b82ebd;
+  mix-blend-mode: screen;
 }
 
 .text {
   font-family: "Roboto Flex", sans-serif;
   font-optical-sizing: auto;
-  color: #c2bbb3;
+  color: #16ce5c;
   font-weight: 400;
   font-style: normal;
   font-size: 21rem;
-  mix-blend-mode: difference;
   font-variation-settings: "slnt" 0, "wdth" 100, "GRAD" 0;
   transition: font-weight 10ms;
 }

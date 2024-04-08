@@ -17,25 +17,21 @@ document.addEventListener("DOMContentLoaded", function () {
     const y = e.clientY;
     const isMouseOverHero = e.target.closest(".hero");
 
+    // Anwenden des Stils Kreis mit Kontur, unabhängig davon, ob sich der Mauszeiger über dem Hero-Bereich befindet oder nicht
+    Object.assign(circle.style, {
+      width: "80px",
+      height: "80px",
+      border: "3px solid #fff",
+      background: "none",
+      mixBlendMode: "difference",
+    });
+
     if (isMouseOverHero) {
-      // Anwenden des Stils Farbverlauf Kreis
-      Object.assign(circle.style, {
-        width: "1200px",
-        height: "1200px",
-        border: "none",
-        background:
-          "radial-gradient(ellipse at center, #220d38, #ce5c16, #c2bbb3, #c2bbb3)",
-        mixBlendMode: "darken",
-      });
+      // Wenn sich der Mauszeiger im Hero-Bereich befindet, den Cursor ausblenden
+      document.body.style.cursor = "none";
     } else {
-      // Anwenden des Stils Kreis mit Kontur
-      Object.assign(circle.style, {
-        width: "40px",
-        height: "40px",
-        border: "2px solid #c2bbb3",
-        background: "rgba(0, 0, 0, 0)",
-        mixBlendMode: "normal",
-      });
+      // Wenn sich der Mauszeiger nicht im Hero-Bereich befindet, den Cursor anzeigen
+      document.body.style.cursor = "none";
     }
 
     // Common styles
@@ -45,7 +41,6 @@ document.addEventListener("DOMContentLoaded", function () {
       left: `${x - circle.offsetWidth / 2}px`,
       top: `${y - circle.offsetHeight / 2}px`,
     });
-    document.body.style.cursor = "none";
   }
 
   function handleGridAnimation(e) {
