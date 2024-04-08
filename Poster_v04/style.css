@@ -4,8 +4,8 @@
 }
 
 ::selection {
-  color: #220d38;
-  background-color: #ce5c16;
+  color: #c2bbb3;
+  background-color: #b82ebd;
   mix-blend-mode: difference;
 }
 
@@ -147,7 +147,6 @@ h1 {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #16ce5c;
 }
 
 .text {
@@ -167,7 +166,6 @@ footer {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #16ce5c;
   padding-bottom: 3rem;
 }
 
@@ -187,7 +185,7 @@ button {
 }
 
 button:hover {
-  background-color: #c2bbb3;
+  background-color: #b82ebd;
   transform: scale(1.05);
   transition-timing-function: ease-out;
   color: #101011;

@@ -46,7 +46,7 @@ window.addEventListener("load", function () {
       frictionStatic: 2,
       restitution: 0.6,
       render: {
-        fillStyle: "#ce5c16",
+        fillStyle: "#b82ebd",
         strokeStyle: "#101011",
         lineWidth: 3,
       },
@@ -66,7 +66,7 @@ window.addEventListener("load", function () {
       frictionStatic: 4,
       restitution: 0.3,
       render: {
-        fillStyle: "#1688ce",
+        fillStyle: "#ce5c16",
         strokeStyle: "#101011",
         lineWidth: 3,
       },
@@ -86,7 +86,7 @@ window.addEventListener("load", function () {
       frictionStatic: 3,
       restitution: 0.5,
       render: {
-        fillStyle: "#16ce5c",
+        fillStyle: "#c2bbb3",
         strokeStyle: "#101011",
         lineWidth: 3,
       },
@@ -161,12 +161,12 @@ window.addEventListener("load", function () {
     viewportWidth / 2,
     viewportHeight,
     viewportWidth,
-    5,
+    15,
     {
       isStatic: true,
       render: {
-        fillStyle: "#c2bbb3",
-        visible: false,
+        fillStyle: "#b82ebd",
+        visible: true,
       },
     }
   );
