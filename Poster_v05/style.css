@@ -173,3 +173,35 @@ h1 {
   font-variation-settings: "slnt" 0, "wdth" 100, "GRAD" 0;
   transition: font-weight 10ms;
 }
+
+footer {
+  height: 10vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 6rem;
+  background-color: #b82ebd;
+  mix-blend-mode: screen;
+}
+
+button {
+  width: 250px;
+  height: 60px;
+  background-color: transparent;
+  border: 4px solid #16ce5c;
+  border-radius: 10px;
+  font-family: "Roboto Flex", sans-serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  line-height: 1.5rem;
+  transition: transform 0.3s ease-in-out;
+  color: #16ce5c;
+}
+
+button:hover {
+  transform: scale(1.05);
+  transition-timing-function: ease-out;
+  color: #b82ebd;
+  font-weight: 700;
+  background-color: #16ce5c;
+}
